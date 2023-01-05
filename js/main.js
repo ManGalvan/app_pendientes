@@ -46,11 +46,4 @@ function agregarTarea() {
     contenedorListado.insertAdjacentElement("afterbegin", inputGroup);
 
     contenedorListado.insertBefore(inputGroup, contenedorListado.children[0]);
-
-    // const div = document.createElement("div");
-    // const inputGroup = div.className = "input-group";
-    // const contentPendiente = div.className = "contentPendiente";
-    // const titulo = div.className = "titulo";
-    // const separador = document.createElement("hr").className = "separador";
-    // const descripcion = div.className = "descripcion";
 }
