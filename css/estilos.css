@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Century Gothic';
+}
+
+#head {
+    text-align: center;
+    /* border: 1px solid; */
+    padding: 5px;
+}
+
+.contenedor {
+    margin: 10px 0px 10px 0;
+    /* border: 1px solid; */
+    height: auto;
+    width: 100%;
+}
+
+#contentControl {
+    display: flex;
+    /* border: 1px solid green; */
+    height: 50px;
+    margin: 10px 0px 10px 0px;
+    justify-content: space-around;
+}
+
+.btn {
+    font-size: 13px;
+    width: auto;
+    padding: 10px;
+    margin: 5px 0px 5px 0px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-purple {
+    background-color: darkorchid;
+}
+
+.btn-danger {
+    background-color: red;
+}
+
+.btn-success {
+    background-color:limegreen;
+}
+
+.btn-warning {
+    background-color: orange;
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    animation: all ease-in;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 5px 10px 5px;
+    /* border: 1px solid; */
+}
+
+#formInsert, #btnOcultar {
+    display: none;
+}
+
+.form-control {
+    margin: 5px 0px 5px 0px;
+    width: 80%;
+    padding: 10px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+}
+
+#btnAgregarTarea {
+    background-color:limegreen;
+    border: none;
+}
+
+.contentPendiente {
+    /* margin: 10px 0px 10px 0px; */
+    border: 2px solid rgb(133, 195, 216);
+    border-radius: 10px;
+    background-color: lightgrey;
+    text-align: center;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.separador {
+    border: 1px solid rgb(133, 195, 216);
+}
+
+.opciones {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width: 650px) {
+    #contenido {
+        display: flex;
+    }
+
+    .contentPendiente {
+        margin: 15px;
+    }
+}
