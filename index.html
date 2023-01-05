@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIO</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header id="head">
+        <h2>PENDIENTES</h2>
+    </header>
+    <main id="main">
+        <section id="contentControl">
+            <span class="btn btn-purple" id="btnNuevo" onclick="aparecer()">Nuevo</span>
+            <span class="btn btn-purple" id="btnOcultar" onclick="ocultar()">Ocultar</span>
+        </section>
+        <div id="contenido">
+            <section class="contenedor" id="formInsert">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="txtTitulo" id="txtTitulo" placeholder="Título...">
+                    <textarea class="form-control" type="text" name="txtDesc" id="txtDesc" placeholder="Descripción..."></textarea>
+                    <span class="form-control btn" id="btnAgregarTarea" onclick="agregarTarea()">Agregar tarea</span>
+                </div>
+            </section>
+            <section class="contenedor" id="formList">
+                <div class="input-group">
+                    <div class="contentPendiente">
+                        <div class="titulo">Título</div>
+                        <hr class="separador">
+                        <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis expedita, in reprehenderit repudiandae autem quibusdam quidem. Adipisci quisquam id beatae?</div>
+                        <div class="opciones">
+                            <span class="btn btn-danger">Eliminar</span>
+                            <span class="btn btn-warning">Editar</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
