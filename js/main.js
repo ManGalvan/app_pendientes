@@ -1,62 +1,91 @@
-function aparecer() {
+window.addEventListener("storage", mostrarTareas);
+mostrarTareas();
+
+function showHide() {
     const frm = document.getElementById("formInsert");
     const btnvo = document.getElementById("btnNuevo");
     const btnoc = document.getElementById("btnOcultar");
-    frm.style = "display:block;";
-    btnvo.style = "display:none;";
-    btnoc.style = "display:block;";
+    frm.classList.toggle("oculto");
+    btnvo.classList.toggle("oculto");
+    btnoc.classList.toggle("oculto");
 }
 
-function ocultar() {
-    const frm = document.getElementById("formInsert");
-    const btnvo = document.getElementById("btnNuevo");
-    const btnoc = document.getElementById("btnOcultar");
-    frm.style = "display:none;";
-    btnvo.style = "display:block;";
-    btnoc.style = "display:none;";
-}
-
-function agregarTarea() {
+function agregarTarea(){
     const getTitulo = document.getElementById("txtTitulo").value;
     const getDesc = document.getElementById("txtDesc").value;
+    localStorage.setItem(getTitulo, getDesc);
+    document.getElementById("txtTitulo").value = "";
+    document.getElementById("txtDesc").value = "";
+    mostrarTareas();
+}
+
+function mostrarTareas() {
     const contenedorListado = document.getElementById("formList");
+    contenedorListado.innerHTML = "";
+    for(let i = 0; i < localStorage.length; i++){
+        const inputGroup = document.createElement("div");
+        const contentPendiente = document.createElement("div");
+        const titulo = document.createElement("div");
+        const separador = document.createElement("hr");
+        const descripcion = document.createElement("div");
+        const opciones = document.createElement("div");
+        const btnEliminar = document.createElement("span");
+        const btnEditar = document.createElement("span");
+        const clave = localStorage.key(i);
+        const valor = localStorage.getItem(clave);
+        const nodoTitulo = document.createTextNode(clave);
+        const nodoDesc = document.createTextNode(valor);
+        titulo.appendChild(nodoTitulo);
+        descripcion.appendChild(nodoDesc);
 
-    const inputGroup = document.createElement("div");
-    const contentPendiente = document.createElement("div");
-    const titulo = document.createElement("div");
-    const separador = document.createElement("hr");
-    const descripcion = document.createElement("div");
-    const opciones = document.createElement("div");
-    const btnEliminar = document.createElement("span");
-    const btnEditar = document.createElement("span");
-    const nodoTitulo = document.createTextNode(getTitulo);
-    const nodoDesc = document.createTextNode(getDesc);
-    const nodoEliminar = document.createElement("Eliminar");
-    const nodoEditar = document.createElement("Editar");
+        btnEliminar.innerText = "Eliminar";
+        btnEditar.innerText = "Editar";
+        btnEliminar.dataset.IdTarea = clave;
+        btnEditar.dataset.IdTarea = clave;
+        btnEliminar.addEventListener("click", accion);
+        btnEditar.addEventListener("click", accion);
 
-    titulo.appendChild(nodoTitulo);
-    descripcion.appendChild(nodoDesc);
-    btnEliminar.innerText = "Eliminar"
-    btnEditar.innerText = "Editar"
+        btnEliminar.className = "btn btn-danger";
+        btnEditar.className = "btn btn-warning";
+        opciones.className = "opciones";
+        descripcion.className = "descripcion";
+        separador.className = "separador";
+        titulo.className = "titulo";
+        contentPendiente.className = "contentPendiente";
+        inputGroup.className = "input-group";
 
-    inputGroup.className = "input-group";
-    contentPendiente.className = "contentPendiente";
-    titulo.className = "titulo";
-    separador.className = "separador";
-    descripcion.className = "descripcion";
-    btnEliminar.className = "btn btn-danger";
-    btnEditar.className = "btn btn-warning";
+        opciones.appendChild(btnEliminar);
+        opciones.appendChild(btnEditar);
 
-    opciones.appendChild(btnEliminar);
-    opciones.appendChild(btnEditar);
+        contentPendiente.appendChild(titulo);
+        contentPendiente.appendChild(separador);
+        contentPendiente.appendChild(descripcion);
+        contentPendiente.appendChild(opciones);
 
-    contentPendiente.appendChild(titulo);
-    contentPendiente.appendChild(separador);
-    contentPendiente.appendChild(descripcion);
-    contentPendiente.appendChild(opciones);
-    inputGroup.appendChild(contentPendiente);
+        inputGroup.appendChild(contentPendiente);
 
-    contenedorListado.insertAdjacentElement("afterbegin", inputGroup);
+        contenedorListado.insertAdjacentElement("afterbegin", inputGroup);
+    }
+}
 
-    contenedorListado.insertBefore(inputGroup, contenedorListado.children[0]);
+function accion(event) {
+    const tareaId = event.target.dataset.tareaId;
+    const accion = event.target.innerText.toLowerCase();
+
+    if (accion === "eliminar") {
+        eliminar(tareaId);
+    } else if (accion === "editar") {
+        editar(tareaId);
+    }
+}
+
+function eliminar(tareaId) {
+    if(confirm("¿Estás seguro?")){
+        localStorage.removeItem(tareaId);
+        mostrarTareas();
+    }
+}
+
+function editar(clave) {
+    console.log("Editado!");
 }

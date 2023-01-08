@@ -69,10 +69,6 @@
     /* border: 1px solid; */
 }
 
-#formInsert, #btnOcultar {
-    display: none;
-}
-
 .form-control {
     margin: 5px 0px 5px 0px;
     width: 80%;
@@ -106,6 +102,10 @@
 .opciones {
     display: flex;
     justify-content: space-between;
+}
+
+.oculto {
+    display: none;
 }
 
 @media (min-width: 650px) {
