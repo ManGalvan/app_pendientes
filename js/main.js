@@ -42,8 +42,6 @@ function mostrarTareas() {
         btnEditar.innerText = "Editar";
         btnEliminar.dataset.IdTarea = clave;
         btnEditar.dataset.IdTarea = clave;
-        btnEliminar.addEventListener("click", accion);
-        btnEditar.addEventListener("click", accion);
 
         btnEliminar.className = "btn btn-danger";
         btnEditar.className = "btn btn-warning";
@@ -53,6 +51,14 @@ function mostrarTareas() {
         titulo.className = "titulo";
         contentPendiente.className = "contentPendiente";
         inputGroup.className = "input-group";
+
+        btnEliminar.addEventListener("click", function(){
+            eliminar(clave);
+        });
+
+        btnEditar.addEventListener("click", function(){
+            editar(clave);
+        })
 
         opciones.appendChild(btnEliminar);
         opciones.appendChild(btnEditar);
@@ -87,5 +93,5 @@ function eliminar(tareaId) {
 }
 
 function editar(clave) {
-    console.log("Editado!");
+    console.log("Editando clave: " + clave);
 }
