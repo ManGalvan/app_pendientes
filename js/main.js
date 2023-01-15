@@ -89,9 +89,23 @@ function eliminar(tareaId) {
     if(confirm("¿Estás seguro?")){
         localStorage.removeItem(tareaId);
         mostrarTareas();
+    } else {
+        alert("Se ha cancelado la acción");
     }
 }
 
 function editar(clave) {
-    console.log("Editando clave: " + clave);
+    let valor = localStorage.getItem(clave);
+    let confirmacion = confirm("¿Deseas editar este valor?");
+    if(confirmacion){
+        let nuevoValor = prompt("Ingrese el nuevo valor");
+        if(nuevoValor){
+            localStorage.setItem(clave, nuevoValor);
+            mostrarTareas();
+        } else {
+            alert("Se ha cancelado la acción");
+        }
+    } else {
+        alert("Se ha cancelado la acción");
+    }
 }
